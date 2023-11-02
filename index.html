@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Year and Month Picker</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    .ui-datepicker-calendar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Year and Month Picker</h3>
+    
+    <!-- Year Picker -->
+    <div class="form-group">
+      <label for="yearpicker">Select Year:</label>
+      <input type="text" id="yearpicker" class="form-control" />
+    </div>
+    
+    <!-- Month Picker -->
+    <div class="form-group">
+      <label for="monthpicker">Select Month:</label>
+      <input type="text" id="monthpicker" class="form-control" />
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // Year Picker
+      $("#yearpicker").datepicker({
+        changeMonth: false,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'yy',
+        onClose: function (dateText, inst) {
+          var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+          $(this).datepicker('setDate', new Date(year, 0, 1));
+        }
+      });
+
+      // Month Picker
+      $("#monthpicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'MM yy',
+        onClose: function (dateText, inst) {
+          var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+          var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+          $(this).datepicker('setDate', new Date(year, month, 1));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
