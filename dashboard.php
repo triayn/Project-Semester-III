@@ -84,103 +84,116 @@ $csrf = $GLOBALS['csrf'];
 
     <section class="section dashboard">
       <div class="row">
-      <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
-          <div class="col-lg-6 col-md-4">
+            <div class="col-lg-6">
               <div class="card success-card revenue-card"><a href="/admin.php">
-                <div class="card-body">
-                  <div class="d-flex align-items-center mt-3 mb-3">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people-fill"></i>
+                  <div class="card-body">
+                    <div class="d-flex align-items-center mt-3 mb-3">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people-fill"></i>
+                      </div>
+                      <div class="ps-1">
+                        <h5 class="card-title">Daftar Admin</h5>
+                        <div class="ps-3">
+                          <?php
+                          $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users WHERE role != 'super admin'");
+                          $data = mysqli_fetch_assoc($sql);
+                          echo "<h4>" . $data['total'] . "</46>";
+                          ?>
+                        </div>
+                      </div>
                     </div>
-                    <div class="ps-1">
-                      <h5 class="card-title">Daftar Admin</h5>
-                      <div class="ps-3">
-                  <?php
-                        $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users WHERE role != 'super admin'");
-                        $data = mysqli_fetch_assoc($sql);
-                        echo "<h4>" . $data['total'] . "</46>";
-                        ?>
-                  </div>                    </div>
-                  </div></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-4">
-              <div class="card success-card revenue-card"><a href="/admin.php">
-                <div class="card-body">
-                  <div class="d-flex align-items-center mt-3 mb-3">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="ps-1">
-                      <h5 class="card-title">Daftar Admin</h5>
-                      <div class="ps-3">
-                    <?php
-                    $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM list_tempat");
-                    $data = mysqli_fetch_assoc($sql);
-                    echo "<h4>" . $data['total'] . "</h4>";
-                    ?>
-                  </div>                    </div>
-                  </div></a>
-                </div>
-              </div>
-            </div>
-         
-            <div class="col-lg-4 col-xl-8">
-              <div class="card">
-                <div class="card-body mt-2 mb-5">
-                  <h5 class="card-title mt-3 "><strong>Kalender</strong></h5>
-                  <?php include('kalender.php');?>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <!-- Recent Activity -->
-              <div class="card">
-                <div class="card-body mt-3 mb-3">
-                  <h5 class="card-title mb-3 "><strong>Pengajuan Terbaru </strong><span>| Hari Ini</span></h5>
-
-                  <div class="activity">
-
-                    <div class="activity-item d-flex">
-                      <div class="activite-label">15 Oktober 2023</div>
-                      <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                      <div class="activity-content">
-                      <a href="halaman/event/pengajuan.php" class="fw-bold text-dark"><h6><strong>Kelola Event</strong></h6>2 Notifikasi                        </a>
-                      </div>
-                    </div><!-- End activity item-->
-
-                    <div class="activity-item d-flex">
-                      <div class="activite-label">15 Oktober 2023</div>
-                      <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                      <div class="activity-content">
-                      <a href="halaman/tempat/pengajuan.php" class="fw-bold text-dark"><h6><strong>Peminjaman Tempat</strong></h6>2 Notifikasi                        </a>
-                      </div>
-                    </div><!-- End activity item-->
-
-                    <div class="activity-item d-flex">
-                      <div class="activite-label">15 Oktober 2023</div>
-                      <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                      <div class="activity-content">
-                         <a href="halaman/seniman/pengajuan.php" class="fw-bold text-dark"><h6><strong>Nomor Induk Seniman</strong></h6>2 Notifikasi                        </a>
-                      </div>
-                    </div><!-- End activity item-->
-
-                    <div class="activity-item d-flex">
-                      <div class="activite-label">15 Oktober 2023</div>
-                      <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                      <div class="activity-content">
-                      <a href="halaman/pentas/pengajuan.php" class="fw-bold text-dark"><h6><strong>Surat Advis</strong></h6>2 Notifikasi                        </a>
-                      </div>
-                    </div><!-- End activity item-->
-                  </div>
-
-                </div>
+                </a>
               </div>
             </div>
           </div>
+          <div class="col-lg-6">
+            <div class="card success-card revenue-card"><a href="/admin.php">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mt-3 mb-3">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="ps-1">
+                      <h5 class="card-title">Daftar Admin</h5>
+                      <div class="ps-3">
+                        <?php
+                        $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM list_tempat");
+                        $data = mysqli_fetch_assoc($sql);
+                        echo "<h4>" . $data['total'] . "</h4>";
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+              </a>
+            </div>
+          </div>
+
         </div>
+
+        <div class="col-lg-4 col-xl-8">
+          <div class="card">
+            <div class="card-body mt-2 mb-5">
+              <h5 class="card-title mt-3 "><strong>Kalender</strong></h5>
+              <?php include('kalender.php'); ?>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-body mt-3 mb-3">
+              <h5 class="card-title mb-3 "><strong>Pengajuan Terbaru </strong><span>| Hari Ini</span></h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">15 Oktober 2023</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="halaman/event/pengajuan.php" class="fw-bold text-dark">
+                      <h6><strong>Kelola Event</strong></h6>2 Notifikasi
+                    </a>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">15 Oktober 2023</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="halaman/tempat/pengajuan.php" class="fw-bold text-dark">
+                      <h6><strong>Peminjaman Tempat</strong></h6>2 Notifikasi
+                    </a>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">15 Oktober 2023</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="halaman/seniman/pengajuan.php" class="fw-bold text-dark">
+                      <h6><strong>Nomor Induk Seniman</strong></h6>2 Notifikasi
+                    </a>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">15 Oktober 2023</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="halaman/pentas/pengajuan.php" class="fw-bold text-dark">
+                      <h6><strong>Surat Advis</strong></h6>2 Notifikasi
+                    </a>
+                  </div>
+                </div><!-- End activity item-->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       </div>
     </section>
 
