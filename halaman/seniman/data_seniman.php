@@ -96,7 +96,6 @@ $csrf = $GLOBALS['csrf'];
                   <tr>
                     <th>No</th>
                     <th>Nomor Induk Seniman</th>
-                    <th>Kategori</th>
                     <th>Nama Seniman</th>
                     <th>Nomor Telepon</th>
                     <th>Aksi</th>
@@ -111,7 +110,6 @@ $csrf = $GLOBALS['csrf'];
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $seniman['nomor_induk'] ?></td>
-                    <td></td>
                     <td><?php echo $seniman['nama_seniman'] ?></td>
                     <td><?php echo $seniman['no_telpon'] ?></td>
                     <td>

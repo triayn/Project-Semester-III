@@ -124,8 +124,7 @@ $csrf = $GLOBALS['csrf'];
                         <td><?php echo $users['no_telpon'] ?></td>
                         <td><?php echo $users['email'] ?></td>
                         <td>
-                        <!-- <a href="/halaman/users/form-edit-user.php?id_user=<?= $users['id_user'] ?>" class="btn btn-lihat"><i class="bi bi-eye-fill"></i> Lihat</a> -->
-                        <button type="button" class="btn btn-lihat" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-eye-fill"></i>Lihat</button>
+                        <a href="/halaman/users/form-edit-user.php?id_user=<?= $users['id_user'] ?>" class="btn btn-lihat"><i class="bi bi-eye-fill"></i> Lihat</a>
                         <a href="/halaman/users/form-edit-user.php?id_user=<?= $users['id_user'] ?>" class="btn btn-edit"><i class="bi bi-pencil-fill"></i> Edit</a>
                         <button type="button" class="btn btn-hapus"><i class="bi bi-trash-fill"></i> Hapus</button>
                       </td>
@@ -143,68 +142,7 @@ $csrf = $GLOBALS['csrf'];
       </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-sm-12" id="editModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title"><strong>Detail Pengguna</strong></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-              <form method="" action="" enctype="" style="padding: 4px; padding-left: 4;">
-                  <input type="hidden" name="_method" value="PUT">
-                  <input type="hidden" name="id_admin" value="<?php echo $userAuth['id_user']; ?>">
-                  <input type="hidden" name="id_user" value="<?php echo $users['id_user']; ?>">
-                  <input type="hidden" name="csrf_token" value="<?php echo $csrf?>">
-                    <div class="row mb-4">
-                      <label for="inputText" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputText" class="col-sm-2 col-form-label">No Handphone</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" name="phone" placeholder="No Handphone" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" name="phone" placeholder="Jenis Kelamin" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputText" class="col-sm-2 col-form-label">Tempat / Tanggal Lahir</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" name="phone" placeholder="Tempat / Tanggal Lahir" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputText" class="col-sm-2 col-form-label">Role</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" name="phone" placeholder="Role" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" name='email' placeholder="Email" readonly>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" name='pass' placeholder="Password" readonly>
-                      </div>
-                    </div>
-              </form>
-          <div class="modal-footer">
-            <button type="cancel" class="btn btn-tambah" data-bs-dismiss="modal">Kembali</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
   </main><!-- End #main -->
 

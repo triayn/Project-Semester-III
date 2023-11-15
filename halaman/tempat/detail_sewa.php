@@ -109,7 +109,7 @@ if (isset($_GET['id_sewa']) && !empty($_GET['id_sewa'])) {
                                     <input type="text" class="form-control" id="nama_peminjam" readonly value="<?php echo $sewa['nama_peminjam'] ?>">
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="nik_sewa" class="form-label">Nomor Induk Kependudukan</label>
+                                    <label for="nik_sewa" class="form-label">No. KTP</label>
                                     <input type="text" class="form-control" id="nik_sewa" readonly value="<?php echo $sewa['nik_sewa'] ?>">
                                 </div>
                                 <div class="col-md-12">
@@ -150,20 +150,20 @@ if (isset($_GET['id_sewa']) && !empty($_GET['id_sewa'])) {
                                 </div>
                                 <div class="col-12">
                                     <label for="surat_keterangan" class="form-label">Surat Keterangan</label>
-                                    <div class="button-container">
-                                        <button class="btn btn-info" type="button" onclick="preview('surat')">Lihat surat keterangan</button>
-                                        <button class="btn btn-info" type="button" onclick="download('surat')">Unduh surat keterangan</button>
-                                    </div>
+                                    <input type="file" class="form-file-input form-control" id="surat_keterangan">
                                 </div>
                                 <div class="text-center">
-                                    <?php  if ($sewa['status'] == 'proses') { ?>
-                                        <button type="button" class="btn btn-tambah">Setuju
-                                        </button>
-                                        <button type="button" class="btn btn-danger">Tolak
-                                        </button>
-                                    <?php } ?>
-                                </div>
-
+                                            <a href="/halaman/tempat/status_peminjaman.php" class="btn btn-info"><i>kembali</i></a>
+                                            <?php if ($sewa['status'] == 'diajukan') { ?>
+                                                <a href="/halaman/tempat/edit_detail_tempat.php?id_tempat=<?= $id ?>" class="btn btn-tambah">Proses</a>
+                                            <?php } else if ($sewa['status'] == 'proses') { ?>
+                                                <button type="button" class="btn btn-tambah">Setuju
+                                                </button>
+                                                <button type="button" class="btn btn-tolak">Tolak
+                                                </button>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
                             </form>
 
                         </div>

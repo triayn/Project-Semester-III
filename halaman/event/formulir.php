@@ -97,35 +97,31 @@ $csrf = $GLOBALS['csrf'];
 
               <form class="row g-3">
                 <div class="col-md-12">
-                  <label for="inputText" class="form-label">Nama Pengirim</label>
+                  <label for="inputText" class="form-label">Nama Pengirim :</label>
                   <input type="text" class="form-control" id="inputText">
                 </div>
                 <div class="col-md-12">
-                  <label for="inputText" class="form-label">Nama Event</label>
+                  <label for="inputText" class="form-label">Nama Event : </label>
                   <input type="text" class="form-control" id="inputText">
                 </div>
-                <div class="col-md-6">
-                  <label for="inputDate" class="form-label">Tanggal awal</label>
-                  <input type="text" class="form-control" id="inputDate"> 
-                </div>
-                <div class="col-md-6">
-                  <label for="inputDate" class="form-label">Tanggal akhir</label>
-                  <input type="text" class="form-control" id="inputDate" >
-                </div>
-                <div class="col-md-12">
-                  <label for="inputText" class="form-label">Tempat</label>
+                <div class="col-md-4">
+                    <label for="inputDate" class="form-label">Tanggal :</label>
+                    <input type="date" class="form-control" id="inputDate">
+                  </div>
+                <div class="col-md-8">
+                  <label for="inputText" class="form-label">Tempat :</label>
                   <input type="text" class="form-control" id="inputText">
                 </div>
                 <div class="col-12">
-                  <label for="inputText" class="form-label">Deskripsi Event</label>
+                  <label for="inputText" class="form-label">Deskripsi Event :</label>
                   <textarea class="form-control" id="inputTextarea" style="height: 100px;"></textarea>
                 </div>
                 <div class="col-12">
-                  <label for="inputLink" class="form-label">Link Pendaftaran</label>
+                  <label for="inputLink" class="form-label">Link Pendaftaran :</label>
                   <input type="link" class="form-control" id="inputLink">
                 </div>
                 <div class="col-12">
-                  <label for="inputFile" class="form-label">Poster Event</label>
+                  <label for="inputFile" class="form-label">Poster Event :</label>
                   <input type="file" class="form-file-input form-control" id="inputFile">
                 </div>
               </form>

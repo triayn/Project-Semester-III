@@ -100,7 +100,7 @@ $csrf = $GLOBALS['csrf'];
                   <input type="text" class="form-control" id="nama_peminjam">
                 </div>
                 <div class="col-md-12">
-                  <label for="nik_sewa" class="form-label">Nomor Induk Kependudukan</label>
+                  <label for="nik_sewa" class="form-label">No. KTP</label>
                   <input type="text" class="form-control" id="nik_sewa">
                 </div>
                 <div class="col-md-12">
@@ -165,6 +165,11 @@ $csrf = $GLOBALS['csrf'];
                       <li>Ruangan atau tempat yang dipinjam untuk kegiatan harus dijaga dan dipelihara dengan sebaik-baiknya.</li>
                     </ol>
                     </h6>
+                    <div class="col card-header text-right">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFormulir">
+                          Edit Formulir
+                      </button>
+                    </div>
                     </div>
                   </div>
                 </div>

@@ -149,6 +149,11 @@ $csrf = $GLOBALS['csrf'];
                           <li>Advis ini adalah bukti Legalitas dari Organisasi Seni / Seniman bukan sebagai Ijin Pentas</li>
                         </ol>
                       </h6>
+                      <div class="col card-header text-right">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFormulir">
+                          Edit Formulir
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

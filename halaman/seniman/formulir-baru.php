@@ -99,7 +99,6 @@ $csrf = $GLOBALS['csrf'];
                   <label for="jenis_kelamin" class="col-md-12 pt-3 col-form-label">Jenis Kelamin</label>
                   <div class="col-md-6">
                     <select class="form-select" aria-label="Default select example">
-                      <option selected>Pilih Jenis Kelamin</option>
                       <option value="laki-laki">Laki-laki</option>
                       <option value="perempuan">Perempuan</option>
                     </select>
@@ -113,14 +112,6 @@ $csrf = $GLOBALS['csrf'];
                   <label for="tanggal_lahir" class="form-label">Tanggal lahir</label>
                   <input type="date" class="form-control" id="tanggal_lahir" readonly>
                 </div>
-                <div class="col-md-6 mt-0">
-                <label for="jenis_kelamin" class="col-md-12 pt-3 col-form-label">Kecamatan</label>
-                <select class="form-select" aria-label="Default select example">
-                      <option selected>Pilih Kecamatan</option>
-                      <option value="laki-laki">Laki-laki</option>
-                      <option value="perempuan">Perempuan</option>
-                    </select>
-                </div>
                 <div class="col-md-12 ">
                   <label for="alamat_seniman" class="form-label">Alamat</label>
                   <textarea class="form-control" id="alamat_seniman" style="height: 100px;" readonly></textarea>
@@ -128,16 +119,6 @@ $csrf = $GLOBALS['csrf'];
                 <div class="col-md-12">
                   <label for="no_telpon" class="form-label">Nomor Telepon</label>
                   <input type="text" class="form-control" id="no_telpon" readonly>
-                </div>
-                <div class="col-mb-3 mt-0">
-                  <label for="jenis_kelamin" class="col-md-12 pt-3 col-form-label">Kategori Seni</label>
-                  <div class="col-md-6">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Pilih Kategori Seni</option>
-                      <option value="laki-laki">Laki-laki</option>
-                      <option value="perempuan">Perempuan</option>
-                    </select>
-                  </div>
                 </div>
                 <div class="col-md-8">
                   <label for="nama_organisasi" class="form-label">Nama Organisasi</label>
@@ -147,36 +128,41 @@ $csrf = $GLOBALS['csrf'];
                   <label for="jumlah_anggota" class="form-label">Jumlah Anggota</label>
                   <input type="number" class="form-control" id="jumlah_anggota" readonly>
                 </div>
-                <div class="col-md-12">
-                  <label for="surat_keterangan" class="form-label">Surat Keterangan</label>
+                <div class="col-12">
+                  <label for="surat_keterangan" class="form-label">Surat Keterangan Desa</label>
                   <input type="file" class="form-file-input form-control" id="surat_keterangan" disabled>
                 </div>
-                <div class="col-md-12">
+                <div class=" col-12">
                   <label for="ktp_seniman" class="form-label">Foto Kartu Tanda Penduduk</label>
                   <input type="file" class="form-file-input form-control" id="ktp_seniman" disabled>
                 </div>
-                <div class="col-md-12">
-                  <label for="pass_foto" class="form-label">Pas Foto 3x4</label>
+                <div class="col-12">
+                  <label for="pass_foto" class="form-label">Pass Foto 3x4</label>
                   <input type="file" class="form-file-input form-control" id="pass_foto" disabled>
                 </div>
-            </form>
-            <br><br>
+              </form>
+              <br><br>
 
-            <div class="col-lg-12 col-md-4">
-              <div class="card success-card revenue-card">
-                <div class="card-body">
-                  <h6><strong>DENGAN PENGAJUAN FORMULIR INI, ANDA MENYETUJUI HAL- HAL BERIKUT :</strong></h6>
-                  <br>
-                  <h6>
-                    <ol start="1">
-                      <li>Dokumen yang disertakan sudah sesuai dengan persyaratan yang ada. </li>
-                      <li>Nomor Induk Seniman hanya berlaku per 31 Desember tiap tahunnya, silahkan lakukan perpanjangan setelahnya.</li>
-                      <li>Apabila data tidak setujui silahkan lakukan pengajuan ulang.</li>
-                    </ol>
-                  </h6>
+              <div class="col-lg-12 col-md-4">
+                <div class="card success-card revenue-card">
+                  <div class="card-body">
+                    <h6><strong>DENGAN PENGAJUAN FORMULIR INI, ANDA MENYETUJUI HAL- HAL BERIKUT :</strong></h6>
+                    <br>
+                    <h6>
+                      <ol start="1">
+                        <li>Dokumen yang disertakan sudah sesuai dengan persyaratan yang ada. </li>
+                        <li>Nomor Induk Seniman hanya berlaku per 31 Desember tiap tahunnya, silahkan lakukan perpanjangan setelahnya.</li>
+                        <li>Apabila data tidak setujui silahkan lakukan pengajuan ulang.</li>
+                      </ol>
+                    </h6>
+                    <div class="col card-header text-right">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFormulir">
+                        Edit Formulir
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
     </section>
 

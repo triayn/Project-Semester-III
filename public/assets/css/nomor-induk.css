@@ -1057,21 +1057,6 @@
   /*--------------------------------------------------------------
   # Icons list page
   --------------------------------------------------------------*/
-
-  .btn.btn-info {
-    background-color: #61BB63  ;
-    color: #fff; 
-    border: 2px solid #61BB63  ; 
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .btn.btn-info:hover {
-    background-color: #4a8f4a ; 
-    border-color: #4a8f4a ;
-    color: #fff;
-  }
-
   .btn.btn-lihat {
     background-color: #FFC107 ;
     color: #fff; 

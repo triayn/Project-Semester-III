@@ -3,14 +3,14 @@ require_once('../../web/koneksi.php');
 require_once('../../web/authenticate.php');
 $database = koneksi::getInstance();
 $conn = $database->getConnection();
-$userAuth = authenticate($_POST, [
-  'uri' => $_SERVER['REQUEST_URI'],
-  'method' => $_SERVER['REQUEST_METHOD']
-], $conn);
-if ($userAuth['status'] == 'error') {
-  header('Location: /login.php');
-} else {
-  $userAuth = $userAuth['data'];
+$userAuth = authenticate($_POST,[
+  'uri'=>$_SERVER['REQUEST_URI'],
+  'method'=>$_SERVER['REQUEST_METHOD']
+],$conn);
+if($userAuth['status'] == 'error'){
+	header('Location: /login.php');
+}else{
+	$userAuth = $userAuth['data'];
   // if($userAuth['role'] != 'super admin'){
   //   echo "<script>alert('Anda bukan super admin !')</script>";
   //   echo "<script>window.location.href = '/dashboard.php';</script>";
@@ -20,7 +20,7 @@ if ($userAuth['status'] == 'error') {
     $id  = $_GET['id_event'];
     $sql = mysqli_query($conn, "SELECT id_event, nama_pengirim, status, catatan, events.id_detail, id_sewa, nama_event, deskripsi, kategori, tempat_event, DATE_FORMAT(tanggal_awal, '%d %M %Y') AS tanggal_awal, DATE_FORMAT(tanggal_akhir, '%d %M %Y') AS tanggal_akhir, link_pendaftaran FROM events INNER JOIN detail_events ON events.id_detail = detail_events.id_detail WHERE id_event = '$id'");
     $events = mysqli_fetch_assoc($sql);
-  } else {
+  }else{
     header('Location: /event.php');
   }
 }
@@ -28,7 +28,6 @@ $csrf = $GLOBALS['csrf'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -39,11 +38,13 @@ $csrf = $GLOBALS['csrf'];
 
   <!-- Favicons -->
   <link href="/public/assets/img/landing-page/favicon.png" rel="icon">
-  <link href="/public/assets/img/landing-page/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/public/assets/img/landing-page/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <!-- <link href="https://fonts.gstatic.com" rel="preconnect"> -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -57,12 +58,12 @@ $csrf = $GLOBALS['csrf'];
 
 <body>
   <script>
-    var csrfToken = "<?php echo $csrf ?>";
+		var csrfToken = "<?php echo $csrf ?>";
     var email = "<?php echo $userAuth['email'] ?>";
     var idUser = "<?php echo $userAuth['id_user'] ?>";
     var number = "<?php echo $userAuth['number'] ?>";
     var role = "<?php echo $userAuth['role'] ?>";
-  </script>
+	</script>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <?php include('../../header.php');
@@ -73,7 +74,7 @@ $csrf = $GLOBALS['csrf'];
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <?php
-      $nav = 'event';
+      $nav = 'event'; 
       include('../../sidebar.php');
       ?>
     </ul>
@@ -88,78 +89,69 @@ $csrf = $GLOBALS['csrf'];
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard.php">Beranda</a></li>
           <li class="breadcrumb-item"><a href="/event.php">Kelola Event</a></li>
-          <?php if ($events['status'] == 'diajukan' || $events['status'] == 'proses') { ?>
+          <?php if($events['status'] == 'diajukan' || $events['status'] == 'proses'){ ?>
             <li class="breadcrumb-item"><a href="/halaman/event/pengajuan.php">Verifikasi Pengajuan</a></li>
-          <?php } else if ($events['status'] == 'diterima' || $events['status'] == 'ditolak') { ?>
+          <?php }else if($events['status'] == 'diterima' || $events['status'] == 'ditolak'){ ?>
             <li class="breadcrumb-item"><a href="/halaman/event/riwayat.php">Riwayat Pengajuan</a></li>
           <?php } ?>
           <li class="breadcrumb-item active">Detail Data</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
+  
+  <section class="section">
+    <div class="row">
         <div class="col-lg-12">
-
+          
           <div class="card">
             <div class="card-body">
-              <?php if ($events['status'] == 'diajukan' || $events['status'] == 'proses') { ?>
+              <?php if($events['status'] == 'diajukan' || $events['status'] == 'proses'){ ?>
                 <h5 class="card-title"> Pengajuan Event</h5>
-              <?php } else if ($events['status'] == 'diterima' || $events['status'] == 'ditolak') { ?>
-                <h5 class="card-title"> Riwayat Pengajuan</h5>
+                <?php }else if($events['status'] == 'diterima' || $events['status'] == 'ditolak'){ ?>
+                  <h5 class="card-title"> Riwayat Pengajuan</h5>
               <?php } ?>
               <form class="row g-3">
                 <div class="col-md-12">
-                  <label for="inputText" class="form-label">Nama Pengirim</label>
-                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['nama_pengirim'] ?>">
+                  <label for="inputText" class="form-label">Nama Pengirim :</label>
+                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['nama_pengirim']?>">
                 </div>
                 <div class="col-md-12">
-                  <label for="inputText" class="form-label">Nama Event</label>
-                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['nama_event'] ?>">
+                  <label for="inputText" class="form-label">Nama Event : </label>
+                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['nama_event']?>">
                 </div>
-                <div class="col-md-6">
-                  <label for="inputDate" class="form-label">Tanggal awal</label>
-                  <input type="text" class="form-control" id="inputDate" readonly value="<?php echo $events['tanggal_awal'] ?>">
+                <div class="col-md-4">
+                    <label for="inputDate" class="form-label">Tanggal awal :</label>
+                    <input type="text" class="form-control" id="inputDate" readonly value="<?php echo $events['tanggal_awal']?>">
                 </div>
-                <div class="col-md-6">
-                  <label for="inputDate" class="form-label">Tanggal akhir</label>
-                  <input type="text" class="form-control" id="inputDate" readonly value="<?php echo $events['tanggal_akhir'] ?>">
+                <div class="col-md-4">
+                    <label for="inputDate" class="form-label">Tanggal akhir :</label>
+                    <input type="text" class="form-control" id="inputDate" readonly value="<?php echo $events['tanggal_akhir']?>">
                 </div>
-                <div class="col-md-12">
-                  <label for="inputText" class="form-label">Tempat</label>
-                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['tempat_event'] ?>">
-                </div>
-                <div class="col-12">
-                  <label for="inputText" class="form-label">Deskripsi Event</label>
-                  <textarea class="form-control" id="inputTextarea" style="height: 100px;" readonly><?php echo $events['deskripsi'] ?></textarea>
+                <div class="col-md-8">
+                  <label for="inputText" class="form-label">Tempat :</label>
+                  <input type="text" class="form-control" id="inputText" readonly value="<?php echo $events['tempat_event']?>">
                 </div>
                 <div class="col-12">
-                  <label for="inputLink" class="form-label">Link Pendaftaran</label>
-                  <input type="link" class="form-control" id="inputLink" readonly value="<?php echo $events['link_pendaftaran'] ?>">
+                  <label for="inputText" class="form-label">Deskripsi Event :</label>
+                  <textarea class="form-control" id="inputTextarea" style="height: 100px;" readonly><?php echo $events['deskripsi']?></textarea>
                 </div>
                 <div class="col-12">
-                  <label for="surat_keterangan" class="form-label">Poster Event</label>
-                  <div class="button-container">
-                    <button class="btn btn-info" type="button" onclick="preview('poster_event')">Lihat poster event</button>
-                    <button class="btn btn-info" type="button" onclick="download('poster_event')">Unduh poster event</button>
-                  </div>
+                  <label for="inputLink" class="form-label">Link Pendaftaran :</label>
+                  <input type="link" class="form-control" id="inputLink" readonly value="<?php echo $events['link_pendaftaran']?>">
                 </div>
-                <div class="text-center">
-                  <?php if ($events['status'] == 'proses') { ?>
-                    <button type="button" class="btn btn-tambah">Setuju
-                    </button>
-                    <button type="button" class="btn btn-danger">Tolak
-                    </button>
-                  <?php } ?>
+                <div class="col-12">
+                  <label for="inputFile" class="form-label">Poster Event :</label>
+                  <input type="file" class="form-file-input form-control" id="inputFile" readonly>
                 </div>
-
-                <?php if (isset($events['catatan']) && !is_null($events['catatan']) && !empty($events['catatan'])) { ?>
+                <?php if(isset($events['catatan']) && !is_null($events['catatan']) && !empty($events['catatan'])){?>
                   <div class="col-12">
-                    <label for="inputText" class="form-label">Keterangan</label>
-                    <textarea class="form-control" id="inputTextarea" style="height: 100px;" readonly><?php echo $events['catatan'] ?></textarea>
+                    <label for="inputText" class="form-label">Catatan :</label>
+                    <textarea class="form-control" id="inputTextarea" style="height: 100px;" readonly><?php echo $events['catatan']?></textarea>
                   </div>
-                <?php } ?>
+                  <?php } ?>
+                  <div class="text-center">
+                    <button type="kirim" class="btn btn-tambah">Proses</button>
+                  </div>
               </form>
               <!-- End General Form Elements -->
             </div>
@@ -177,7 +169,8 @@ $csrf = $GLOBALS['csrf'];
     ?>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

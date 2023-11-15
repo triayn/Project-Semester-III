@@ -178,7 +178,7 @@ $csrf = $GLOBALS['csrf'];
                 <button type="submit" class="btn btn-success" name="editAdmin">Edit Data</button>
                 </div>
 
-            </form><!-- End General Form Elements -->
+              </form><!-- End General Form Elements -->
 
             </div>
           </div>

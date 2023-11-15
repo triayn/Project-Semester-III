@@ -3,14 +3,14 @@ require_once('../../web/koneksi.php');
 require_once('../../web/authenticate.php');
 $database = koneksi::getInstance();
 $conn = $database->getConnection();
-$userAuth = authenticate($_POST, [
-  'uri' => $_SERVER['REQUEST_URI'],
-  'method' => $_SERVER['REQUEST_METHOD']
-], $conn);
-if ($userAuth['status'] == 'error') {
-  header('Location: /login.php');
-} else {
-  $userAuth = $userAuth['data'];
+$userAuth = authenticate($_POST,[
+  'uri'=>$_SERVER['REQUEST_URI'],
+  'method'=>$_SERVER['REQUEST_METHOD']
+],$conn);
+if($userAuth['status'] == 'error'){
+	header('Location: /login.php');
+}else{
+	$userAuth = $userAuth['data'];
   // if($userAuth['role'] != 'super admin'){
   //   echo "<script>alert('Anda bukan super admin !')</script>";
   //   echo "<script>window.location.href = '/dashboard.php';</script>";
@@ -20,7 +20,7 @@ if ($userAuth['status'] == 'error') {
     $id  = $_GET['id_advis'];
     $sql = mysqli_query($conn, "SELECT id_advis, nomor_induk, nama_advis, alamat_advis, deskripsi_advis, DATE_FORMAT(tgl_advis, '%d %M %Y') AS tanggal, tempat_advis, status, catatan, FROM surat_advis WHERE id_advis = '$id'");
     $pentas = mysqli_fetch_assoc($sql);
-  } else {
+  }else{
     header('Location: /pentas.php');
   }
 }
@@ -39,11 +39,13 @@ $csrf = $GLOBALS['csrf'];
 
   <!-- Favicons -->
   <link href="/public/assets/img/LandingPage/favicon.png" rel="icon">
-  <link href="/public/assets/img/LandingPage/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/public/assets/img/LandingPage/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <!-- <link href="https://fonts.gstatic.com" rel="preconnect"> -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -68,25 +70,25 @@ $csrf = $GLOBALS['csrf'];
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-      <?php
-      $nav = 'pentas';
-      include('../../sidebar.php');
-      ?>
+        <?php
+        $nav = 'pentas';
+        include('../../sidebar.php');
+        ?>
     </ul>
 
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
+  <div class="pagetitle">
       <h1>Detail Pentas</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard.php">Beranda</a></li>
           <li class="breadcrumb-item"><a href="/pentas.php">Kelola Pentas</a></li>
-          <?php if ($pentas['status'] == 'diajukan' || $pentas['status'] == 'proses') { ?>
+          <?php if($pentas['status'] == 'diajukan' || $pentas['status'] == 'proses'){ ?>
             <li class="breadcrumb-item"><a href="/halaman/pentas/pengajuan.php">Pengajuan Pentas</a></li>
-          <?php } else if ($pentas['status'] == 'diterima' || $pentas['status'] == 'ditolak') { ?>
+          <?php }else if($pentas['status'] == 'diterima' || $pentas['status'] == 'ditolak'){ ?>
             <li class="breadcrumb-item"><a href="/halaman/pentas/riwayat.php">Riwayat Pengajuan Pentas</a></li>
           <?php } ?>
           <li class="breadcrumb-item active">Detail event</li>
@@ -105,11 +107,11 @@ $csrf = $GLOBALS['csrf'];
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">SURAT ADVIS PENYELENGGARAAN PERTUNJUKAN KESENIAN</h5>
-              <p>
+                <p>
                 Lampiran VI 2 Peraturan Bupati Nganjuk Nomor : 28 Tahun 2021 Tanggal, 21 September 2021, Tentang Rincian Tugas, Fungsi dan Tata Kerja Dinas Kepemudaan, Olahraga, Kebudayaan dan Pariwisata Daerah Kabupaten Nganjuk, Maka Kepala Dinas Kepemudaan, Olahraga, Kebudayaan dan Pariwisata Kabupaten Nganjuk setelah memperhatikan permohonan dari :
-              </p>
+                </p>
 
-              <form method="POST" action="../users/proses-tambah-user.php">
+              <form method="POST" action="../users/proses-tambah-user.php" >
                 <!-- <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">ID USER</label>
                   <div class="col-sm-10">
@@ -119,7 +121,7 @@ $csrf = $GLOBALS['csrf'];
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Nama Pemohon</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nama" readonly value="<?php echo $pentas['nama_advis'] ?>">
+                  <input type="text" class="form-control" name="nama" readonly value="<?php echo $pentas['nama_advis'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -131,7 +133,7 @@ $csrf = $GLOBALS['csrf'];
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Untuk Pentas</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="phone" readonly value="<?php echo $pentas['nama_advis'] ?>">
+                  <input type="text" class="form-control" name="phone" readonly value="<?php echo $pentas['nama_advis'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -150,18 +152,9 @@ $csrf = $GLOBALS['csrf'];
               </form><!-- End General Form Elements -->
 
               <p>
-                Menyatakan tidak keberatan memberikan Surat Advis sebagai pelengkap Surat Induk nomor ... untuk mendapatkan ijin keramaian dari kepolisian. Surat Advis ini berlaku tgl ... (Satu kali pentas). Pementasan kesenian tanpa Surat Advis merupakan pelanggaran Peraturan Daerah.
+              Menyatakan tidak keberatan memberikan Surat Advis sebagai pelengkap Surat Induk nomor ... untuk mendapatkan ijin keramaian dari kepolisian. Surat Advis ini berlaku tgl ... (Satu kali pentas). Pementasan kesenian tanpa Surat Advis merupakan pelanggaran Peraturan Daerah.
               </p>
             </div>
-            <div class="text-center">
-              <?php if ($seniman['status'] == 'proses') { ?>
-                <button type="button" class="btn btn-tambah">Setuju
-                </button>
-                <button type="button" class="btn btn-danger">Tolak
-                </button>
-              <?php } ?>
-            </div>
-
           </div>
 
         </div>
@@ -173,30 +166,32 @@ $csrf = $GLOBALS['csrf'];
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <?php include('../../footer.php');
-    ?>
-  </footer>
+        <?php include('../../footer.php');
+        ?>
+    </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="/public/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="/public/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="/public/assets/js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var currentPageURL = window.location.href;
-      var menuLinks = document.querySelectorAll('.nav-link');
-      menuLinks.forEach(function(menuLink) {
-        var menuLinkURL = menuLink.getAttribute('href');
-        if (currentPageURL === menuLinkURL) {
-          menuLink.parentElement.classList.add('active');
-        }
+    <!-- Template Main JS File -->
+    <script src="/public/assets/js/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var currentPageURL = window.location.href;
+        var menuLinks = document.querySelectorAll('.nav-link');
+        menuLinks.forEach(function (menuLink) {
+          var menuLinkURL = menuLink.getAttribute('href');
+          if (currentPageURL === menuLinkURL) {
+            menuLink.parentElement.classList.add('active');
+          }
+        });
       });
-    });
-  </script>
+
+    </script>
 </body>
 
 </html>

@@ -86,50 +86,47 @@ $csrf = $GLOBALS['csrf'];
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-lg-6">
-              <div class="card success-card revenue-card"><a href="/admin.php">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center mt-3 mb-3">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-people-fill"></i>
-                      </div>
-                      <div class="ps-1">
-                        <h5 class="card-title">Daftar Admin</h5>
-                        <div class="ps-3">
-                          <?php
-                          $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users WHERE role != 'super admin'");
-                          $data = mysqli_fetch_assoc($sql);
-                          echo "<h4>" . $data['total'] . "</46>";
-                          ?>
-                        </div>
-                      </div>
-                    </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="card success-card revenue-card"><a href="/admin.php">
-                <div class="card-body">
-                  <div class="d-flex align-items-center mt-3 mb-3">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="ps-1">
-                      <h5 class="card-title">Daftar Admin</h5>
-                      <div class="ps-3">
-                        <?php
-                        $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM list_tempat");
-                        $data = mysqli_fetch_assoc($sql);
-                        echo "<h4>" . $data['total'] . "</h4>";
-                        ?>
-                      </div>
-                    </div>
+          <div class="col-lg-6 col-md-4">
+          <div class="card success-card revenue-card"><a href="/admin.php">
+              <div class="card-body">
+                <h5 class="card-title">Daftar Admin</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people-fill"></i>
                   </div>
-              </a>
-            </div>
+                  <div class="ps-3">
+                  <?php
+                        $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users WHERE role != 'super admin'");
+                        $data = mysqli_fetch_assoc($sql);
+                        echo "<h4>" . $data['total'] . "</46>";
+                        ?>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <div class="card success-card revenue-card"><a href="/pengguna.php">
+              <div class="card-body">
+                <h5 class="card-title">Daftar Pengguna</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <div class="ps-3">
+                    <?php
+                    $sql  = mysqli_query($conn, "SELECT COUNT(*) AS total FROM list_tempat");
+                    $data = mysqli_fetch_assoc($sql);
+                    echo "<h4>" . $data['total'] . "</h4>";
+                    ?>
+                  </div>
+                </div>
+            </a>
+          </div>
+        </div>
 
+          </div>
         </div>
 
         <div class="col-lg-4 col-xl-8">
@@ -140,7 +137,7 @@ $csrf = $GLOBALS['csrf'];
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
           <!-- Recent Activity -->
           <div class="card">
             <div class="card-body mt-3 mb-3">
@@ -196,6 +193,8 @@ $csrf = $GLOBALS['csrf'];
       </div>
       </div>
     </section>
+
+
 
   </main><!-- End #main -->
 

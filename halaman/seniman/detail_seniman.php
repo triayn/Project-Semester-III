@@ -133,14 +133,6 @@ $csrf = $GLOBALS['csrf'];
                                     <label for="tanggal_lahir" class="form-label">Tanggal lahir</label>
                                     <input type="text" class="form-control" id="tanggal_lahir" readonly value="<?php echo $seniman['tanggal_lahir'] ?>">
                                 </div>
-                                <div class="col-md-6 mt-0">
-                                    <label for="jenis_kelamin" class="col-md-12 pt-3 col-form-label">Kecamatan</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Pilih Kecamatan</option>
-                                        <option value="laki-laki">Laki-laki</option>
-                                        <option value="perempuan">Perempuan</option>
-                                    </select>
-                                </div>
                                 <div class="col-md-12 ">
                                     <label for="alamat_seniman" class="form-label">Alamat</label>
                                     <textarea class="form-control" id="alamat_seniman" placeholder="Masukkan Alamat" style="height: 100px;" readonly><?php echo $seniman['alamat_seniman'] ?></textarea>
@@ -148,16 +140,6 @@ $csrf = $GLOBALS['csrf'];
                                 <div class="col-md-12">
                                     <label for="no_telpon" class="form-label">Nomor Telepon</label>
                                     <input type="text" class="form-control" id="no_telpon" readonly value="<?php echo $seniman['no_telpon'] ?>">
-                                </div>
-                                <div class="col-mb-3 mt-0">
-                                    <label for="jenis_kelamin" class="col-md-12 pt-3 col-form-label">Kategori Seni</label>
-                                    <div class="col-md-6">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Pilih Kategori Seni</option>
-                                            <option value="laki-laki">Laki-laki</option>
-                                            <option value="perempuan">Perempuan</option>
-                                        </select>
-                                    </div>
                                 </div>
                                 <div class="col-md-8">
                                     <label for="nama_organisasi" class="form-label">Nama Organisasi</label>
@@ -168,28 +150,22 @@ $csrf = $GLOBALS['csrf'];
                                     <input type="number" class="form-control" id="jumlah_anggota" readonly value="<?php echo $seniman['jumlah_anggota'] ?>">
                                 </div>
                                 <div class="col-12">
-                                    <label for="surat_keterangan" class="form-label">Surat Keterangan</label>
-                                    <div class="button-container">
-                                        <button class="btn btn-info" type="button" onclick="preview('surat')">Lihat surat keterangan</button>
-                                        <button class="btn btn-info" type="button" onclick="download('surat')">Unduh surat keterangan</button>
-                                    </div>
+                                    <label for="surat_keterangan" class="form-label">Surat Keterangan Desa</label>
+                                    <input type="file" class="form-file-input form-control" id="surat_keterangan">
                                 </div>
-                                <div class="col-12">
+                                <div class=" col-12">
                                     <label for="ktp_seniman" class="form-label">Foto Kartu Tanda Penduduk</label>
-                                    <div class="button-container">
-                                        <button class="btn btn-info" type="button" onclick="preview('ktp')">Lihat foto KTP</button>
-                                        <button class="btn btn-info" type="button" onclick="download('ktp')">Unduh foto KTP</button>
-                                    </div>
+                                    <input type="file" class="form-file-input form-control" id="ktp_seniman">
                                 </div>
                                 <div class="col-12">
                                     <label for="pass_foto" class="form-label">Pass Foto 3x4</label>
-                                    <div class="button-container">
-                                        <button class="btn btn-info" type="button" onclick="preview('foto')">Lihat pas foto</button>
-                                        <button class="btn btn-info" type="button" onclick="download('foto')">Unduh pas foto</button>
-                                    </div>
+                                    <input type="file" class="form-file-input form-control" id="pass_foto">
                                 </div>
                                 <div class="text-center">
-                                    <?php if ($seniman['status'] == 'proses') { ?>
+                                    <a href="/halaman/tempat/status_peminjaman.php" class="btn btn-info"><i>kembali</i></a>
+                                    <?php if ($seniman['status'] == 'diajukan') { ?>
+                                        <a href="/halaman/tempat/edit_detail_tempat.php?id_tempat=<?= $id ?>" class="btn btn-proses">Proses</a>
+                                    <?php } else if ($seniman['status'] == 'proses') { ?>
                                         <button type="button" class="btn btn-tambah">Setuju
                                         </button>
                                         <button type="button" class="btn btn-danger">Tolak

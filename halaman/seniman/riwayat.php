@@ -44,17 +44,10 @@ $csrf = $GLOBALS['csrf'];
   <link href="/public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="/public/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
   <!-- Template Main CSS File -->
   <link href="/public/assets/css/nomor-induk.css" rel="stylesheet">
-  <style>
-    .ui-datepicker-calendar {
-      display: none;
-    }
-  </style>
 
 </head>
 
@@ -96,18 +89,7 @@ $csrf = $GLOBALS['csrf'];
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"></h5>
-<!-- Year Picker -->
-<div class="form-group">
-      <label for="yearpicker">Select Year:</label>
-      <input type="text" id="yearpicker" class="form-control" />
-    </div>
-    
-    <!-- Month Picker -->
-    <div class="form-group">
-      <label for="monthpicker">Select Month:</label>
-      <input type="text" id="monthpicker" class="form-control" />
-    </div>
-  </div>
+
               <table class="table datatable">
                 <thead>
                   <tr>
@@ -169,34 +151,6 @@ $csrf = $GLOBALS['csrf'];
   <script src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/public/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="/public/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script>
-    $(function () {
-      // Year Picker
-      $("#yearpicker").datepicker({
-        changeMonth: false,
-        changeYear: true,
-        showButtonPanel: true,
-        dateFormat: 'yy',
-        onClose: function (dateText, inst) {
-          var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-          $(this).datepicker('setDate', new Date(year, 0, 1));
-        }
-      });
-
-      // Month Picker
-      $("#monthpicker").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        dateFormat: 'MM yy',
-        onClose: function (dateText, inst) {
-          var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-          var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-          $(this).datepicker('setDate', new Date(year, month, 1));
-        }
-      });
-    });
-  </script>
 
   <!-- Template Main JS File -->
   <script src="/public/assets/js/main.js"></script>
